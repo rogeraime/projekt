@@ -7,8 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import lombok.ToString;
 
 @SpringBootTest
+@ToString
 class LoadBalancerApplicationTests {
 	
 	@Autowired
@@ -17,7 +19,7 @@ class LoadBalancerApplicationTests {
 	private Request request;
 
 	@Test
-	void loadBalanceTest() {
+	public void loadBalanceTest() {
 		
 		//Initialization for Hosts
 		hosts.add(new Host("first_host"));
@@ -39,8 +41,7 @@ class LoadBalancerApplicationTests {
 		//For Selective hosts algorithm
 		loadBalanceAlgorithm = new SelectiveHostAlgorithmImplementation();
         loadBalanceAlgorithm.loadBalance(this.hosts, this.request);
-		
-		//assertEquals(true, this.hosts.forEach(host->host.isHandle()));
+	
 	}
 
 }
