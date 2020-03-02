@@ -13,13 +13,11 @@ public class SelectiveHostAlgorithmImplementation implements LoadBalanceAlgorith
 	private final static int MAXIMUN_LOAD_VALUE = 40;
 	private int minimun_load_value = SelectiveHostAlgorithmImplementation.MAXIMUN_LOAD_VALUE;
 	private Host hostToBalance;
-	private static boolean attribut=false;
 	
 	@Override
 	public void loadBalance(List<Host> hosts, Request request) {
 		hostToBalance = this.getHostToBalance(hosts);
 		hostToBalance.handleRequest(request);
-		attribut = true;
 	}
 
 	public Host getHostToBalance(List<Host> hosts) {
